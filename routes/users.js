@@ -161,22 +161,19 @@ function findWeixinUser(options, cb) {
 }
 
 function insertWeixinUser(options, cb) {
-    var user = new UserModel({
-        weixin: {
-            type: options.type, //app 和 小程序
-            openid: options.openid || "",
-            unionid: options.unionid || "",
-            nickname: options.nickname || "",
-            gender: options.gender || "",
-            city: options.city || "",
-            province: options.province || "",
-            country: options.country || "",
-            avatarUrl: options.avatarUrl || "",
-            access_token: options.access_token || "",
-            expires_in: options.expires_in,
-            refresh_token: options.refresh_token || "",
-        }
-    });
+    var user = new UserModel({});
+    user.weixin.type = options.type; //app 和 小程序
+    user.weixin.openid = options.openid || "";
+    user.weixin.unionid = options.unionid || "";
+    user.weixin.nickname = options.nickname || "";
+    user.weixin.gender = options.gender || "";
+    user.weixin.city = options.city || "";
+    user.weixin.province = options.province || "";
+    user.weixin.country = options.country || "";
+    user.weixin.avatarUrl = options.avatarUrl || "";
+    user.weixin.access_token = options.access_token || "";
+    user.weixin.expires_in = options.expires_in;
+    user.weixin.refresh_token = options.refresh_token || "";
     user.save(function(err, u) {
         cb(err, u)
     });
